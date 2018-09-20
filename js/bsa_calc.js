@@ -17,14 +17,29 @@ function calculate() {
     // inch to meter: 1 in = 0.0254 m
     // inch to cm: 1 in = 2.54 cm
 
+    //Weight from lbs to kg
+    var newWeight = (weight * 0.454);
+
+    //Height from in to cm
+    var newHeightCM = (height * 2.54);
+
+    //Height from in to meters
+    var newHeightM = (height * 0.0254);
+
+
+
     // ==========================================
     // Todo: Perform conversion calculations here
 
     // -------------------------------
     // Body Surface Area (BSA)
     // -------------------------------
-
     var BSA = 0;
+
+    var BSA1 = ((newHeightCM)*(newWeight)/3600);
+    BSA = Math.sqrt(BSA1);
+
+
 
     // ==========================================
     // Todo: Perform BSA calculation here
@@ -39,12 +54,13 @@ function calculate() {
 
         // ==========================================
         // Todo: Perform female IBW calculation here
-
+        IBW = (45.5 + 2.3*(newHeightCM - 60));
 
     } else if ( male ) {
 
         // ==========================================
         // Todo: Perform male IBW calculation here
+        IBW = (50 + 2.3*(newHeightCM - 60));
 
     }
 
@@ -56,8 +72,8 @@ function calculate() {
 
     // ==========================================
     // Todo: Perform BMI calculation here
-
-
+        var BMIHeight = Math.pow(newHeightM, 2);
+        BMI = (newWeight / BMIHeight);
 
     // Do not modify this function call
     display( BSA, IBW, BMI );
